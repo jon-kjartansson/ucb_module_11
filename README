@@ -1,0 +1,63 @@
+Link to Jupyter notebook: https://github.com/jon-kjartansson/ucb_module_11/blob/main/practical_application_ii.ipynb
+
+What Drives the Price of a Used Car?
+
+Final Report Summary for Used Car Dealership Group
+
+📌 Business Objective
+The goal of this analysis was to identify the key factors that influence the price of used cars, using a dataset of car listings. By understanding which features most impact pricing, dealerships can make better-informed decisions about inventory selection, pricing strategy, and identifying undervalued vehicles.
+
+📌 Primary Findings
+After cleaning the data and fitting a regularized Ridge regression model (to handle multicollinearity and overfitting), we identified the features with the strongest relationships to car prices.
+
+Top Positive Price Drivers (Features Associated with Higher Prices):
+
+Feature	Coefficient	Count
+manufacturer_ferrari	+1.60	64
+manufacturer_tesla	+0.67	682
+manufacturer_porsche	+0.67	1018
+cylinders_12 cylinders	+0.60	160
+type_pickup	+0.37	32,507
+manufacturer_rover	+0.37	1566
+
+Interpretation:
+
+Luxury and exotic brands (Ferrari, Tesla, Porsche) predictably command higher prices.
+12-cylinder engines (rare, high-performance vehicles) are valued higher.
+Pickup trucks also tend to sell for higher prices, likely due to demand for utility vehicles.
+
+Top Negative Price Drivers (Features Associated with Lower Prices):
+
+Feature	Coefficient	Count
+title_status_parts only	-1.53	125
+condition_salvage	-0.99	463
+condition_fair	-0.84	5285
+fuel_electric	-0.81	1297
+title_status_missing	-0.76	593
+fuel_hybrid	-0.70	3973
+
+Interpretation:
+
+“Parts only” or “salvage” title status massively reduces value.
+Fair or poor vehicle condition lowers price significantly.
+Interestingly, electric and hybrid vehicles in this dataset sold at lower prices, likely due to model-year age, battery condition, or limited regional demand in this sample.
+
+📌 Secondary Insights
+Year (age of vehicle) had a small positive relationship with price — but much less than brand or title/condition.
+Odometer readings (mileage) had a negligible coefficient near zero in this regularized model, suggesting that after adjusting for other factors like brand, type, and condition, mileage’s incremental effect on price was diminished.
+Popular manufacturers like Ford, Toyota, and Honda had moderate or slightly positive coefficients, reflecting steady market demand but not premium pricing.
+
+📌 Recommendations for Dealers
+Prioritize high-demand makes and body types — luxury brands, pickup trucks, and rare performance vehicles show consistently higher pricing power.
+Avoid vehicles with salvage, parts-only, or missing title statuses — these severely hurt resale value.
+Invest in inventory with verified good or like-new condition — the price drop-off for “fair” or “salvage” condition is sharp.
+Monitor market-specific demand for electric/hybrid vehicles — while their coefficients were negative here, regional demand variations could make these viable in specific locations.
+Use feature importance insights like this to support pricing strategy and appraisals during trade-ins.
+
+📌 Next Steps
+Integrate real-time market data to track shifts in demand for specific fuel types or vehicle types.
+Use separate models for regional markets since pricing behavior varies by location.
+Consider adding more vehicle attributes (like battery health for EVs, accident history, etc.) for more precise pricing models.
+
+📌 Final Note
+This Ridge regression model prioritized predictive accuracy over statistical p-values (since regularized models don’t produce classic significance tests). Coefficient magnitudes and direction provide clear, actionable guidance on which features most impact price.
